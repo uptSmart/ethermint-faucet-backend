@@ -37,7 +37,7 @@ FAUCET_MNEMONIC: some secret words here
 
 ## Endpoints
 
-All endpoints will return the relevent success status if successful. Errors will
+All endpoints will return the relevant success status if successful. Errors will
 return an appropriate error code and a message under the `error` key.
 
 ### `GET /`
