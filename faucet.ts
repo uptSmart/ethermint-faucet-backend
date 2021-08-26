@@ -11,10 +11,11 @@ const FAUCET_DENOM = process.env.FAUCET_DENOM || "uakt";
 const FAUCET_FEES = process.env.FAUCET_FEES || 5000;
 const FAUCET_GAS = process.env.FAUCET_GAS || 180000;
 const FAUCET_MEMO = process.env.FAUCET_MEMO;
+const ADDRESS_PREFIX = process.env.ADDRESS_PREFIX || "ethm";
 
 export const getWallet = () => {
   return DirectSecp256k1HdWallet.fromMnemonic(FAUCET_MNEMONIC as any, {
-    prefix: "akash",
+    prefix: ADDRESS_PREFIX,
   });
 };
 
