@@ -1,5 +1,6 @@
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { SigningStargateClient, coins } from "@cosmjs/stargate";
+import { stringToPath } from "@cosmjs/crypto";
 import parse from "parse-duration";
 
 const NETWORK_RPC_NODE = process.env.NETWORK_RPC_NODE;
@@ -16,6 +17,7 @@ const ADDRESS_PREFIX = process.env.ADDRESS_PREFIX || "ethm";
 export const getWallet = () => {
   return DirectSecp256k1HdWallet.fromMnemonic(FAUCET_MNEMONIC as any, {
     prefix: ADDRESS_PREFIX,
+    hdPaths: [stringToPath("m/44'/60'/0'/0/0")],
   });
 };
 
@@ -42,7 +44,10 @@ export const getChainId = async () => {
 
 export const sendTokens = async (recipient: any, amount: any) => {
   const wallet = await getWallet();
+  console.log('sender ' + wallet)
+  console.log(JSON.stringify(wallet))
   const [account] = await wallet.getAccounts();
+  console.log(account)
   const client = await SigningStargateClient.connectWithSigner(
     NETWORK_RPC_NODE as any,
     wallet
@@ -57,10 +62,13 @@ export const sendTokens = async (recipient: any, amount: any) => {
       amount: coins(parseInt(amount), FAUCET_DENOM),
     },
   };
+  console.log("1")
+
   const fee = {
     amount: coins(parseInt(FAUCET_FEES as any), FAUCET_DENOM),
     gas: FAUCET_GAS,
   };
+  console.log("2")
   return await client.signAndBroadcast(
     account.address,
     [sendMsg],
