@@ -7,7 +7,7 @@ const NETWORK_RPC_NODE = process.env.NETWORK_RPC_NODE;
 const FAUCET_MNEMONIC = process.env.FAUCET_MNEMONIC;
 const FAUCET_WAIT_PERIOD = process.env.FAUCET_WAIT_PERIOD || "24h";
 const FAUCET_DISTRIBUTION_AMOUNT =
-  process.env.FAUCET_DISTRIBUTION_AMOUNT || 1000;
+  process.env.FAUCET_DISTRIBUTION_AMOUNT || 1000000000;
 const FAUCET_DENOM = process.env.FAUCET_DENOM || "uakt";
 const FAUCET_FEES = process.env.FAUCET_FEES || 5000;
 const FAUCET_GAS = process.env.FAUCET_GAS || 180000;

@@ -10,6 +10,7 @@
   "dependencies": {
     "@cosmjs/proto-signing": "^0.26.0",
     "@cosmjs/stargate": "^0.26.0",
+    "@hanchon/ethermint-address-converter": "^1.0.0",
     "@types/cors": "^2.8.12",
     "cors": "^2.8.5",
     "debug": "~2.6.9",

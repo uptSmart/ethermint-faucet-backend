@@ -5,6 +5,7 @@ import got from "got";
 import { User, Transaction } from "../database";
 import * as faucet from "../faucet";
 import { ensureAuthenticated, blockedAddresses, rateLimit } from "../utils";
+import { ethToEthermint } from "@hanchon/ethermint-address-converter";
 
 const DOMAIN = process.env.AUTH0_DOMAIN;
 
@@ -26,7 +27,22 @@ router.post(
   blockedAddresses,
   rateLimit,
   async (req: any, res: any, next: any) => {
-    const { address } = req.body;
+    let { address } = req.body;
+    try {
+      if (address.length < 2){
+        counterDripError.inc();
+        res.status(422).send(JSON.stringify({ error: "Invalid wallet" }));
+        return
+      } 
+
+      if (address[0] === "0" && address[1]==="x") {
+        address = ethToEthermint(address)
+      } 
+
+    } catch(error) {
+      counterDripError.inc();
+      res.status(422).send(JSON.stringify({ error: "Invalid wallet" }));
+    }
 
     try {
       if (!req.user.id) {
