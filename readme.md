@@ -1,19 +1,19 @@
-# Akash Faucet
+# Ethermint Faucet
 
-Faucet server for the [Akash Network](https://akash.network)
+Faucet server for [Ethermint](https://ethermint.dev/)
 
 ## How to use
 
 The faucet is authenticated using Auth0 and the 
 [SPA with API](https://auth0.com/docs/architecture-scenarios/spa-api) architecture. 
-A good example of this setup is the [Akash faucet UI](). 
+A good example of this setup is the [Ethermint faucet frontend](https://github.com/hanchon-live/ethermint-faucet-frontend). 
 
 Users have rate-limited access to the faucet with a configurable wait period. 
 If the `manage:faucet` permission is given to a user in Auth0, additional 
 endpoints are accessible to view transaction and user history, and manage
 a list of blocked addresses.
 
-This faucet is configured to work with Akash but will work with any Tendermint SDK based chain.
+This faucet is configured to work with Ethermint.
 
 ## Configuration
 
@@ -26,7 +26,7 @@ POSTGRES_PASSWORD: password
 NETWORK_RPC_NODE: https://rpc.akash.beyno.de:443
 FAUCET_WAIT_PERIOD: 1d
 FAUCET_DISTRIBUTION_AMOUNT: 1000
-FAUCET_DENOM: uakt
+FAUCET_DENOM: ethm
 FAUCET_FEES: 5000
 FAUCET_GAS: 180000
 FAUCET_MEMO: Sent from Faucet
