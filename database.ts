@@ -41,7 +41,7 @@ export const Transaction = sequelize.define("transaction", {
     allowNull: false,
   },
   amount: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   transactionHash: {

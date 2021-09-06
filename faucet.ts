@@ -1,5 +1,5 @@
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
-import { SigningStargateClient, coins } from "@cosmjs/stargate";
+import { SigningStargateClient, coins, parseCoins } from "@cosmjs/stargate";
 import { stringToPath } from "@cosmjs/crypto";
 import parse from "parse-duration";
 
@@ -59,16 +59,13 @@ export const sendTokens = async (recipient: any, amount: any) => {
     value: {
       fromAddress: account.address,
       toAddress: recipient,
-      amount: coins(parseInt(amount), FAUCET_DENOM),
+      amount: parseCoins(`${amount}${FAUCET_DENOM}`),
     },
   };
-  console.log("1")
-
   const fee = {
     amount: coins(parseInt(FAUCET_FEES as any), FAUCET_DENOM),
     gas: FAUCET_GAS,
   };
-  console.log("2")
   return await client.signAndBroadcast(
     account.address,
     [sendMsg],
