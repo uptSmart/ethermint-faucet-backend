@@ -13,6 +13,8 @@ const counterPreflight = new client.Counter({
 
 /* GET home page. */
 router.get("/", async (req: any, res: any, next: any) => {
+
+  console.log(1);
   const wallet = await faucet.getWallet();
   const chainId = await faucet.getChainId();
   const distributionAmount = faucet.getDistributionAmount();
@@ -20,6 +22,7 @@ router.get("/", async (req: any, res: any, next: any) => {
   const [{ address }] = await wallet.getAccounts();
   var unlockDate;
 
+  console.log(2);
   if (req.user && req.user.id) {
     let cooldownDate = new Date(
       (new Date() as any) - (faucet.getWaitPeriod() as any)
@@ -31,6 +34,7 @@ router.get("/", async (req: any, res: any, next: any) => {
       );
   }
 
+  console.log(3);
   counterPreflight.inc();
   res.status(200).send(
     JSON.stringify({
@@ -41,6 +45,8 @@ router.get("/", async (req: any, res: any, next: any) => {
       distrbutionDenom,
     })
   );
+
+  console.log(4);
 });
 
 export { router };

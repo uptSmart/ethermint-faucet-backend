@@ -5,15 +5,21 @@
   "scripts": {
     "start": "node ./bin/www",
     "migrate": "node ./bin/migrate.js",
-    "dev": "nodemon ./bin/www"
+    "dev": "node ./bin/migrate.js && node ./bin/www"
   },
   "dependencies": {
     "@cosmjs/proto-signing": "^0.26.0",
     "@cosmjs/stargate": "^0.26.0",
+    "@ethersproject/wallet": "^5.7.0",
     "@hanchon/ethermint-address-converter": "^1.0.0",
     "@types/cors": "^2.8.12",
+    "@uptsmart/proto-signing": "0.27.4",
+    "@uptsmart/proto-types": "0.27.6",
+    "@uptsmart/stargate": "0.27.6",
+    "bech32": "^2.0.0",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
+    "ethers": "^5.7.1",
     "express-jwt": "^6.0.0",
     "express-jwt-authz": "^2.4.1",
     "fastify": "^3.20.2",
