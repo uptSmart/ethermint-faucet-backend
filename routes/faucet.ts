@@ -42,6 +42,7 @@ function toHexString(bytes:Array<any>) {
 
 router.post(
     "/",
+    ensureAuthenticated,
     blockedAddresses,
     userLimit,
     async (req: any, res: any, next: any) => {
