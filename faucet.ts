@@ -27,7 +27,7 @@ export const getWallet = () => {
 
 export const getEthWallet = () => {
 
-  console.log("xxl FAUCET_MNEMONIC is ",FAUCET_MNEMONIC,ADDRESS_PREFIX);
+  // console.log("xxl FAUCET_MNEMONIC is ",FAUCET_MNEMONIC,ADDRESS_PREFIX);
   // const ethProvider = new ethers.provider.JsonRpcProvider(NETWORK_RPC_NODE);
   const ethProvider = new ethers.providers.JsonRpcProvider(NETWORK_RPC_NODE);
 
