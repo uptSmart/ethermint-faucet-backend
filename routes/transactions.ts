@@ -1,12 +1,11 @@
 import express from "express";
 const router = express.Router();
 import * as db from "../database";
-import { ensureAuthenticated, ensurePermission } from "../utils";
+import { ensureAuthenticated} from "../utils";
 
 router.get(
   "/",
   ensureAuthenticated,
-  ensurePermission,
   function (req: any, res: any, next: any) {
     db.Transaction.findAll({
       order: [["createdAt", "DESC"]],
